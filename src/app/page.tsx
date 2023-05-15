@@ -5,7 +5,7 @@ import MainAnimation from "./components/MainAnimation";
 
 export default function Home() {
   return (
-    <main className="flex h-screen flex-col py-8 px-4 max-w-xl justify-around">
+    <main className="">
       <div className="top">
         <MainAnimation />
         <Title intent="title" alignment="centered">
