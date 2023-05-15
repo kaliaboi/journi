@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <main className="flex h-screen flex-col p-8 max-w-xl justify-between">
       <div className="top px-2">
-        <Lottie animationData={animation} loop={true} />
+        <Lottie className="h-72" animationData={animation} loop={true} />
         <Title intent="title" alignment="centered">
           Welcome to Journi!
         </Title>
