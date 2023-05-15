@@ -2,15 +2,20 @@ import { cn } from "@/app/lib/utils";
 import { VariantProps, cva } from "class-variance-authority";
 import { HTMLAttributes, ReactNode, forwardRef } from "react";
 
-const title = cva([" text-zinc-50"], {
+const title = cva(["font-[600] text-[#111827]"], {
   variants: {
     intent: {
-      title: "text-md",
+      title: "text-[30px]",
       subtitle: "",
+    },
+    alignment: {
+      left: "text-left",
+      centered: "text-center",
     },
   },
   defaultVariants: {
     intent: "title",
+    alignment: "left",
   },
 });
 
@@ -21,9 +26,13 @@ interface TitleProps
 }
 
 const Title = forwardRef<HTMLHeadingElement, TitleProps>(
-  ({ children, className, intent, ...props }, ref) => {
+  ({ children, className, intent, alignment, ...props }, ref) => {
     return (
-      <h1 ref={ref} {...props} className={cn(title({ intent, className }))}>
+      <h1
+        ref={ref}
+        {...props}
+        className={cn(title({ alignment, intent, className }))}
+      >
         {children}
       </h1>
     );
