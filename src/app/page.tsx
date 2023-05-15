@@ -5,7 +5,7 @@ import MainAnimation from "./components/MainAnimation";
 
 export default function Home() {
   return (
-    <main className="px-6 py-12">
+    <main className="px-6 py-12 h-screen">
       <div className="top">
         <MainAnimation />
         <Title intent="title" alignment="centered">
