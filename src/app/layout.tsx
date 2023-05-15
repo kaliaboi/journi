@@ -15,7 +15,7 @@ export default function RootLayout({
       <head>
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
       </head>
-      <body className="flex flex-col items-center h-screen">{children}</body>
+      <body>{children}</body>
     </html>
   );
 }
