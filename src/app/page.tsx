@@ -16,7 +16,7 @@ export default function Home() {
         </Title>
         <Paragraph alignment="centered">
           Journi is a tiny everyday journal that helps you build a journaling
-          habit by asking you 3 questions on how you're feeling.
+          habit by asking you 3 questions on how you are feeling.
         </Paragraph>
       </div>
       <Button>Start Journaling</Button>
