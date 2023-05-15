@@ -4,7 +4,7 @@ import { FC, HTMLAttributes, ReactNode, forwardRef } from "react";
 
 const button = cva(
   [
-    "rounded-xl flex flex-row justify-center p-5 w-full bg-[#111827] text-white",
+    "rounded-md flex flex-row justify-center p-3 w-full bg-[#111827] text-white",
   ],
   {
     variants: {
