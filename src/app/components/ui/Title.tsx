@@ -5,7 +5,7 @@ import { HTMLAttributes, ReactNode, forwardRef } from "react";
 const title = cva(["font-[600] text-[#111827]"], {
   variants: {
     intent: {
-      title: "text-[30px]",
+      title: "text-[24px]",
       subtitle: "",
     },
     alignment: {

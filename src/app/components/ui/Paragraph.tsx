@@ -13,8 +13,8 @@ const paragraph = cva(["font-[400] pt-2 leading-snug"], {
       centered: "text-center",
     },
     size: {
-      normal: "text-[18px]",
-      tiny: "text-[14px]",
+      normal: "text-[16px]",
+      tiny: "text-[12px]",
     },
   },
   defaultVariants: {
