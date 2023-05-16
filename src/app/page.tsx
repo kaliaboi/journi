@@ -17,7 +17,7 @@ export default function Home() {
           journaling habit by asking you 3 questions on how you are feeling.
         </Paragraph>
       </div>
-      <div className="bottom">
+      <div className="bottom lg:mt-24">
         <Button className="lg:mt-12">Start Journaling</Button>
         <div className="disclaimer flex flex-row items-center justify-center gap-1 mt-4">
           <LockClosedIcon className="text-[#6b7280]" />
