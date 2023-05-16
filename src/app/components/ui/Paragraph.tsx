@@ -2,7 +2,7 @@ import { cn } from "@/app/lib/utils";
 import { VariantProps, cva } from "class-variance-authority";
 import { HTMLAttributes, ReactNode, forwardRef } from "react";
 
-const paragraph = cva(["font-[400] pt-2 leading-snug"], {
+const paragraph = cva(["font-[400] leading-snug"], {
   variants: {
     prominence: {
       normal: "text-[#6b7280]",
@@ -14,7 +14,7 @@ const paragraph = cva(["font-[400] pt-2 leading-snug"], {
     },
     size: {
       normal: "text-[16px]",
-      tiny: "text-[12px]",
+      tiny: "text-[14px]",
     },
   },
   defaultVariants: {
@@ -31,11 +31,11 @@ interface ParagraphProps
 }
 
 const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(
-  ({ children, prominence, className, alignment }, ref) => {
+  ({ children, size, prominence, className, alignment }, ref) => {
     return (
       <p
         ref={ref}
-        className={cn(paragraph({ prominence, alignment, className }))}
+        className={cn(paragraph({ size, prominence, alignment, className }))}
       >
         {children}
       </p>
