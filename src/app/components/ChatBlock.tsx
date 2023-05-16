@@ -22,9 +22,7 @@ const ChatBlock: FC<ChatBlockProps> = ({ question }) => {
           }}
           autoFocus
           value={response}
-        >
-          {response}
-        </textarea>
+        ></textarea>
       )}
     </div>
   );
