@@ -5,6 +5,7 @@ import { HTMLAttributes, ReactNode, forwardRef } from "react";
 const paragraph = cva(["font-[400] leading-snug"], {
   variants: {
     prominence: {
+      dark: "text-[#393e47]",
       normal: "text-[#6b7280]",
       muted: "text-[#9ba4b5]",
     },
