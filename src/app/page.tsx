@@ -5,7 +5,7 @@ import MainAnimation from "./components/MainAnimation";
 
 export default function Home() {
   return (
-    <main className="px-6 py-12 flex flex-col justify-around">
+    <main className="px-6 py-12 flex flex-col justify-between lg:justify-center max-w-lg">
       <div className="top">
         <MainAnimation />
         <Title intent="title" alignment="centered">
@@ -16,7 +16,7 @@ export default function Home() {
           journaling habit by asking you 3 questions on how you are feeling.
         </Paragraph>
       </div>
-      <Button className="mt-24">Start Journaling</Button>
+      <Button className="lg:mt-12">Start Journaling</Button>
     </main>
   );
 }
