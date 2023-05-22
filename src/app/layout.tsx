@@ -15,7 +15,7 @@ export default function RootLayout({
       <head>
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
       </head>
-      <body className="flex w-full justify-center">{children}</body>
+      <body>{children}</body>
     </html>
   );
 }
