@@ -17,7 +17,7 @@ const Message: FC<MessageProps> = ({ role, message }) => {
       <div
         className={clsx(
           role === "user" ? "bg-slate-50" : "bg-slate-100",
-          "px-6 py-12"
+          "p-4"
         )}
       >
         {message}

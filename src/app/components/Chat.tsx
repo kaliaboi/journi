@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ChatGPTMessage,
   initialMessages,
@@ -12,6 +12,7 @@ import Input from "./ui/Input";
 import Message from "./Message";
 
 const Chat = ({}) => {
+  const chatRef = useRef<null | HTMLDivElement>(null);
   const sendMessage = async (message: string) => {
     setLoading(true);
     const newMessages = [
@@ -44,12 +45,17 @@ const Chat = ({}) => {
       }
     }
     getResponse();
+    chatRef.current?.scroll({
+      top: chatRef.current.scrollHeight,
+      left: 0,
+      behavior: "smooth",
+    });
   }, [messages]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
 
   return (
-    <div className="">
+    <div ref={chatRef} className="">
       {messages.map(({ content, role }, index) => (
         <Message key={index} role={role} message={content} />
       ))}
