@@ -16,6 +16,7 @@ const paragraph = cva(["font-[400] leading-snug"], {
     size: {
       normal: "text-[16px]",
       tiny: "text-[14px]",
+      prompt: "text-[20px] font-semibold",
     },
   },
   defaultVariants: {

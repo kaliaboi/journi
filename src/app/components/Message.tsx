@@ -1,6 +1,7 @@
 import { clsx } from "clsx";
 import { FC } from "react";
 import { motion } from "framer-motion";
+import Paragraph from "./ui/Paragraph";
 
 interface MessageProps {
   role: "user" | "assistant" | "system";
@@ -14,13 +15,10 @@ const Message: FC<MessageProps> = ({ role, message }) => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <div
-        className={clsx(
-          role === "user" ? "bg-slate-50" : "bg-slate-100",
-          "p-4"
-        )}
-      >
-        {message}
+      <div className="p-4">
+        <Paragraph size="prompt" prominence="dark">
+          {message}
+        </Paragraph>
       </div>
     </motion.div>
   );

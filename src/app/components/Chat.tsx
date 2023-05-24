@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import moment from "moment";
 import {
   ChatGPTMessage,
   initialMessages,
@@ -10,8 +11,13 @@ import {
 import ChatLoader from "./ui/ChatLoader";
 import Input from "./ui/Input";
 import Message from "./Message";
+import EntryHeader from "./EntryHeader";
+import EntryFooter from "./EntryFooter";
 
 const Chat = ({}) => {
+  const [time, setTime] = useState<number>(Date.now());
+  const [steps, setSteps] = useState<number>(1);
+  const [prompts, setPrompts] = useState<ChatGPTMessage[]>(initialMessages);
   const chatRef = useRef<null | HTMLDivElement>(null);
   const sendMessage = async (message: string) => {
     setLoading(true);
@@ -34,6 +40,14 @@ const Chat = ({}) => {
           })
           .then((response) => {
             setLoading(false);
+            setSteps(steps + 1);
+            setPrompts([
+              ...prompts,
+              {
+                role: "assistant",
+                content: String(response.data.choices[0].message?.content),
+              },
+            ]);
             setMessages([
               ...messages,
               {
@@ -56,15 +70,32 @@ const Chat = ({}) => {
 
   return (
     <div ref={chatRef} className="">
-      {messages.map(({ content, role }, index) => (
-        <Message key={index} role={role} message={content} />
-      ))}
-
-      {loading ? (
-        <ChatLoader />
-      ) : (
-        <Input input={input} setInput={setInput} sendMessage={sendMessage} />
+      <EntryHeader
+        title="New Entry"
+        subtitle={moment().format("MMMM Do YYYY, h:mm A")}
+      />
+      <div className="prompt mt-2">
+        <Message
+          role={prompts[prompts.length - 1].role}
+          message={prompts[prompts.length - 1].content}
+        />
+      </div>
+      {!loading && (
+        <Input
+          input={input}
+          setInput={setInput}
+          sendMessage={sendMessage}
+          disabled={loading}
+        />
       )}
+
+      <EntryFooter
+        input={input}
+        loading={loading}
+        submitActive={steps > 3}
+        nextAction={sendMessage}
+        setInput={setInput}
+      />
     </div>
   );
 };
