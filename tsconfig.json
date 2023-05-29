@@ -29,7 +29,9 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/app/api/message/route.js",
-    "src/api/[...nextauth].js"
+    "src/api/[...nextauth].js",
+    "middleware.js",
+    "src/app/lib/supabase.js"
   ],
   "exclude": ["node_modules"]
 }

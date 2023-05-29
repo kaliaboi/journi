@@ -3,9 +3,9 @@
 import { FC, useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
 
-interface pageProps {}
+interface HomeProps {}
 
-const page: FC<pageProps> = ({}) => {
+const Home: FC<HomeProps> = ({}) => {
   const [loading, setLoading] = useState(true);
   const [session, setSession] = useState<any>({});
 
@@ -38,4 +38,4 @@ const page: FC<pageProps> = ({}) => {
   );
 };
 
-export default page;
+export default Home;
