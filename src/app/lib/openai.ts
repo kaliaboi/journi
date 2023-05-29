@@ -34,6 +34,6 @@ export interface ChatGPTMessage {
 export const initialMessages: ChatGPTMessage[] = [
   {
     role: "assistant",
-    content: "Hi! I am a friendly AI assistant. Ask me anything!",
+    content: "Hi! how are you feeling?",
   },
 ];

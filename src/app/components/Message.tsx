@@ -10,17 +10,17 @@ interface MessageProps {
 
 const Message: FC<MessageProps> = ({ role, message }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
-      <div className="p-4">
+    <div className="p-4">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
         <Paragraph size="prompt" prominence="dark">
           {message}
         </Paragraph>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 };
 

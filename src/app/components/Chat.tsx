@@ -13,6 +13,7 @@ import Input from "./ui/Input";
 import Message from "./Message";
 import EntryHeader from "./EntryHeader";
 import EntryFooter from "./EntryFooter";
+import { motion } from "framer-motion";
 
 const Chat = ({}) => {
   const [time, setTime] = useState<number>(Date.now());
@@ -69,12 +70,18 @@ const Chat = ({}) => {
   const [loading, setLoading] = useState(false);
 
   return (
-    <div ref={chatRef} className="">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      ref={chatRef}
+      className="max-w-xl bg-slate-50"
+    >
       <EntryHeader
         title="New Entry"
-        subtitle={moment().format("MMMM Do YYYY, h:mm A")}
+        subtitle={moment().format("MMMM Do, h:mm A")}
       />
-      <div className="prompt mt-2">
+      <div className="prompt">
         <Message
           role={prompts[prompts.length - 1].role}
           message={prompts[prompts.length - 1].content}
@@ -96,7 +103,7 @@ const Chat = ({}) => {
         nextAction={sendMessage}
         setInput={setInput}
       />
-    </div>
+    </motion.div>
   );
 };
 
