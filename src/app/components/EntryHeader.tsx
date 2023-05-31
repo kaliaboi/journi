@@ -6,6 +6,7 @@ import {
   SunIcon,
   Cross1Icon,
 } from "@radix-ui/react-icons";
+import Link from "next/link";
 
 interface EntryHeaderProps {
   title?: string;
@@ -30,7 +31,9 @@ const EntryHeader: FC<EntryHeaderProps> = ({
         </Paragraph>
       </div>
       <div className="rig">
-        <Cross1Icon />
+        <Link href={"/home"}>
+          <Cross1Icon />
+        </Link>
       </div>
     </nav>
   );

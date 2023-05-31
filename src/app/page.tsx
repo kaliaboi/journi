@@ -2,16 +2,7 @@
 import { useEffect, useState } from "react";
 import Landing from "./components/Landing";
 import Loading from "./components/Loading";
-import { Account } from "appwrite";
-import { client } from "./lib/appwrite";
 import { supabase } from "./lib/supabase";
-
-function authenticateWithGoogle() {
-  const account = new Account(client);
-
-  // Go to OAuth provider login page
-  account.createOAuth2Session("google", "http://localhost:3001/journal");
-}
 
 async function signInWithGoogle() {
   const { data, error } = await supabase.auth.signInWithOAuth({

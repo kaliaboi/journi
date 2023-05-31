@@ -37,3 +37,9 @@ export const initialMessages: ChatGPTMessage[] = [
     content: "Hi! how are you feeling?",
   },
 ];
+
+export const summarizeMessage: ChatGPTMessage = {
+  role: "user",
+  content:
+    "Summarize the conversation till now in first person as the user, refer to yourself as Journi and respond in the following format: s = [summary]",
+};

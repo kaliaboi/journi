@@ -7,6 +7,7 @@ interface EntryFooterProps {
   nextAction: any;
   setInput: any;
   input: string;
+  submitAction: any;
 }
 
 const EntryFooter: FC<EntryFooterProps> = ({
@@ -15,6 +16,7 @@ const EntryFooter: FC<EntryFooterProps> = ({
   nextAction,
   input,
   setInput,
+  submitAction,
 }) => {
   return (
     <div className="flex flex-row-reverse justify-between px-[20px] fixed bottom-5 w-full">
@@ -30,7 +32,12 @@ const EntryFooter: FC<EntryFooterProps> = ({
         {loading ? "Loading..." : "Next"}
       </Button>
       {submitActive && (
-        <Button intent="success" size="tiny" className="w-auto">
+        <Button
+          intent="success"
+          size="tiny"
+          className="w-auto"
+          onClick={() => submitAction()}
+        >
           Submit
         </Button>
       )}

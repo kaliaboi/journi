@@ -7,6 +7,7 @@ import {
   initialMessages,
   initialPrompt,
   openai,
+  summarizeMessage,
 } from "../lib/openai";
 import ChatLoader from "./ui/ChatLoader";
 import Input from "./ui/Input";
@@ -14,9 +15,11 @@ import Message from "./Message";
 import EntryHeader from "./EntryHeader";
 import EntryFooter from "./EntryFooter";
 import { motion } from "framer-motion";
+import { supabase } from "../lib/supabase";
+import { nanoid } from "nanoid";
 
 const Chat = ({}) => {
-  const [time, setTime] = useState<number>(Date.now());
+  const date = useRef(moment().format("MMMM Do, h:mm A"));
   const [steps, setSteps] = useState<number>(1);
   const [prompts, setPrompts] = useState<ChatGPTMessage[]>(initialMessages);
   const chatRef = useRef<null | HTMLDivElement>(null);
@@ -69,6 +72,34 @@ const Chat = ({}) => {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const handleSubmit = () => {
+    setLoading(true);
+    openai
+      .createChatCompletion({
+        model: "gpt-3.5-turbo",
+        messages: [...messages, summarizeMessage as ChatGPTMessage],
+      })
+      .then(async (response) => {
+        setLoading(false);
+        const summary = response.data.choices[0].message?.content
+          .replace("s = ", "")
+          .replace(/['"]+/g, "");
+
+        const { data } = await supabase.auth.getSession();
+        const userId = data.session?.user.id;
+        const journaledAt = date.current;
+        console.log(userId);
+
+        const { error } = await supabase.from("Entries").insert({
+          user_id: userId,
+          journaled_at: journaledAt,
+          summary: summary,
+        });
+
+        window.location.replace("/home");
+      });
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -102,6 +133,7 @@ const Chat = ({}) => {
         submitActive={steps > 3}
         nextAction={sendMessage}
         setInput={setInput}
+        submitAction={handleSubmit}
       />
     </motion.div>
   );
