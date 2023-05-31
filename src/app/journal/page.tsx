@@ -5,7 +5,7 @@ import { openai } from "../lib/openai";
 import Chat from "../components/Chat";
 import { supabase } from "../lib/supabase";
 
-const page: FC = ({}) => {
+const Home: FC = ({}) => {
   const [loading, setLoading] = useState(true);
   const [session, setSession] = useState<any>({});
   useEffect(() => {
@@ -29,4 +29,4 @@ const page: FC = ({}) => {
   );
 };
 
-export default page;
+export default Home;
