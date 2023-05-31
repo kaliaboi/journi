@@ -42,7 +42,7 @@ const Home: FC<HomeProps> = ({}) => {
       <AppHeader />
       <div className="px-[20px] my-10">
         <p>Your Entries</p>
-        {entries.map((entry, key) => (
+        {entries.map((entry: any, key: any) => (
           <div className="my-4 border-2 p-4 rounded-lg" key={key}>
             <Paragraph className="text-gray-950 font-semibold mb-4">
               {entry.journaled_at}
